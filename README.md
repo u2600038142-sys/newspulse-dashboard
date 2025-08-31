@@ -9,7 +9,7 @@ Scrape global news → cleanse → load to a SQL data warehouse → visualize in
 
 ## ⚡ Architecture
 
-![Architecture](docs/architecture.png)
+![Architecture](Docs/architecture.png)
 
 **Flow (high-level):**
 1. **Scraping** — UiPath fetches Reuters “World” news (past 24h) → CSV.
