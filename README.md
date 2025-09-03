@@ -42,9 +42,6 @@ Scrape global news → cleanse → load to a SQL data warehouse → visualize in
 
 ## 📂 Repository Structure
 
-
-> **Note:** Jangan commit secrets (SAS, account keys, tokens). Simpan di Key Vault / Databricks Secrets.
-
 ---
 
 ## 🚀 Pipeline Details
