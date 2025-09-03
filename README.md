@@ -47,16 +47,16 @@ Scrape global news → cleanse → load to a SQL data warehouse → visualize in
 ## 🚀 Pipeline Details
 
 ### 1) Ingestion (UiPath → Blob)
-- Output CSV schema contoh: `source_name, source_url, title`
+- Output CSV schema: `source_name, source_url, title`
 - Path: `raw/ingest_date=YYYY-MM-DD/source=reuters/*.csv`
 
 ### 2) Cleansing (Databricks, PySpark)
-- Baca sebagai **text** → filter multipart boundaries / headers
-- Parse ulang sebagai CSV valid (quote support, multiline)
-- Simpan ke `clean/ingest_date=YYYY-MM-DD/source=reuters/clean_reuters.csv`
+- Read as **text** → filter multipart boundaries / headers
+- Reparse for a CSV valid (quote support, multiline)
+- save to `clean/ingest_date=YYYY-MM-DD/source=reuters/clean_reuters.csv`
 
 ### 3) Orchestration (ADF)
-Activities (sekuensial):
+Activities (sequences):
 1. **Stored Procedure** → `dbo.sp_truncate_staging` (atau `sp_clear_staging_by_date`)
 2. **Databricks Notebook** → `nb_clean_news` (params: `p_date`, `p_source`)
 3. **Copy Data** → Blob `clean/*.csv` → SQL `dbo.staging_fact_article`
@@ -68,7 +68,7 @@ Schema `dwh`:
 - `dim_source(source_id PK, source_name, source_url)`
 - `fact_article(article_id PK, date_key FK, source_id FK, title, load_ts)`
 
-Indeks yang disarankan:
+Indexing:
 ```sql
 -- Staging
 CREATE INDEX IX_staging_ingestdate ON dbo.staging_fact_article(ingest_date);
