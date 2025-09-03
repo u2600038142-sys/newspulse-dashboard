@@ -1,0 +1,36 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "adf-newspulse-dev"
+		},
+		"ls_blob_raw_dev_connectionString": {
+			"value": ""
+		},
+		"ls_databricks_newspulse_dev_accessToken": {
+			"value": ""
+		},
+		"ls_sql_newspulse_dev_password": {
+			"value": ""
+		},
+		"ls_databricks_newspulse_dev_properties_typeProperties_existingClusterId": {
+			"value": "0829-214831-jfgeylz6"
+		},
+		"ls_sql_newspulse_dev_properties_typeProperties_server": {
+			"value": "sql-newspulse-dev.database.windows.net"
+		},
+		"ls_sql_newspulse_dev_properties_typeProperties_database": {
+			"value": "sqldb-newspulse-dev"
+		},
+		"ls_sql_newspulse_dev_properties_typeProperties_userName": {
+			"value": "sqladmin"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
