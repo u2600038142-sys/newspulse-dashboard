@@ -112,7 +112,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"notebookPath": "/Workspace/Users/u2600038142@gmail.com/clean_news_csv"
+					"notebookPath": "/Users/u2600038142@gmail.com/newspulse-dashboard/AzureDatabricks/clean_news_csv"
 				},
 				"linkedServiceName": {
 					"referenceName": "ls_databricks_newspulse_dev",
@@ -133,7 +133,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"notebookPath": "/Workspace/Users/u2600038142@gmail.com/clean_blob_clean_news"
+					"notebookPath": "/Users/u2600038142@gmail.com/newspulse-dashboard/AzureDatabricks/clean_blob_clean_news"
 				},
 				"linkedServiceName": {
 					"referenceName": "ls_databricks_newspulse_dev",
