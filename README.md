@@ -1,3 +1,5 @@
+# Portfolio of Markus Lasroha
+
 # 📊 NewsPulse Dashboard
 
 End-to-end **data pipeline & analytics** project on **Microsoft Azure**.  
