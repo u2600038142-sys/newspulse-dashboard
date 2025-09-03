@@ -1,4 +1,9 @@
-# Portfolio of Markus Lasroha
+## 👤 Author
+
+**Markus Lasroha Oppusunggu**  
+- 💼 [LinkedIn](https://www.linkedin.com/in/markus-oppusunggu/)  
+- 💻 [GitHub](https://github.com/u2600038142-sys)  
+- ✉️ [Email](mailto:oppusunggu.markus@gmail.com)  
 
 # 📊 NewsPulse Dashboard
 
