@@ -1,0 +1,60 @@
+{
+	"name": "ds_sql_staging_articles_dev",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_sql_newspulse_dev",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "source_name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "source_url",
+				"type": "nvarchar"
+			},
+			{
+				"name": "title",
+				"type": "nvarchar"
+			},
+			{
+				"name": "summary",
+				"type": "nvarchar"
+			},
+			{
+				"name": "published_utc",
+				"type": "datetime2",
+				"scale": 7
+			},
+			{
+				"name": "lang",
+				"type": "nvarchar"
+			},
+			{
+				"name": "category",
+				"type": "nvarchar"
+			},
+			{
+				"name": "content_hash",
+				"type": "char"
+			},
+			{
+				"name": "load_ts",
+				"type": "datetime2",
+				"scale": 7
+			},
+			{
+				"name": "ingest_date",
+				"type": "date"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "staging_fact_article"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

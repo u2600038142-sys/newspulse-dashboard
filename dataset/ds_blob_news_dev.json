@@ -1,0 +1,30 @@
+{
+	"name": "ds_blob_news_dev",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_blob_raw_dev",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "clean_reuters.csv",
+				"folderPath": "clean/ingest_date=2025-08-29/source=reuters",
+				"container": "raw"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "-----------9D0C6A03-B0F3-4468-98AC-C0F941755464",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

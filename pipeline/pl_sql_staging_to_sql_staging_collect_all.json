@@ -1,0 +1,57 @@
+{
+	"name": "pl_sql_staging_to_sql_staging_collect_all",
+	"properties": {
+		"activities": [
+			{
+				"name": "sp_move_staging_to_staging_collect_all",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[sp_collect_staging_articles]"
+				},
+				"linkedServiceName": {
+					"referenceName": "ls_sql_newspulse_dev",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "sp_dedup_staging_collect_all",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "sp_move_staging_to_staging_collect_all",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[sp_deduplicate_staging_collect_all]"
+				},
+				"linkedServiceName": {
+					"referenceName": "ls_sql_newspulse_dev",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2025-09-02T19:54:09Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

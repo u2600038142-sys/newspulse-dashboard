@@ -1,0 +1,148 @@
+{
+	"name": "pl_ingest_clean_to_sql_staging_dev",
+	"properties": {
+		"description": "raw/clean/ingest_date=2025-08-29/source=reuters/...csv\n\nto\n\nraw/clean/ingest_date=2025-08-29/source=reuters\n\nto\n\ndbo.staging_fact_article.",
+		"activities": [
+			{
+				"name": "cp_from_clean_news_csv_to_staging",
+				"description": "Store the\nraw/clean/ingest_date=2025-08-29/source=reuters/clean_reuters.csv\nto\ndbo.staging_fact_article.",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "nb_clean_news",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 3,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "ds_blob_news_dev",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ds_sql_staging_articles_dev",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "sp_truncate_staging",
+				"description": "This process is to delete the staging_fact_article.\nTRUNCATE TABLE dbo.staging_fact_article;",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "nb_clean_blob_clean_news",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 3,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[sp_truncate_staging]"
+				},
+				"linkedServiceName": {
+					"referenceName": "ls_sql_newspulse_dev",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "nb_clean_news",
+				"description": "This process is to clean the news CSV in the Azure Blob.\nraw/ingest_date=2025-08-29/reuters_world_2025-08-29.csv\nand store it to\nraw/clean/ingest_date=2025-08-29/source=reuters.\n",
+				"type": "DatabricksNotebook",
+				"dependsOn": [
+					{
+						"activity": "sp_truncate_staging",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 3,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Workspace/Users/u2600038142@gmail.com/clean_news_csv"
+				},
+				"linkedServiceName": {
+					"referenceName": "ls_databricks_newspulse_dev",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "nb_clean_blob_clean_news",
+				"description": "This process is to clean the unimportant files to freshen the folder below\nraw/clean/ingest_date=2025-08-29/source=reuters.",
+				"type": "DatabricksNotebook",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 3,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Workspace/Users/u2600038142@gmail.com/clean_blob_clean_news"
+				},
+				"linkedServiceName": {
+					"referenceName": "ls_databricks_newspulse_dev",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2025-09-02T19:41:07Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

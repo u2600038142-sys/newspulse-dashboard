@@ -1,0 +1,73 @@
+{
+	"name": "pl_orchestrator",
+	"properties": {
+		"description": "Orchestrating all the pipelines",
+		"activities": [
+			{
+				"name": "RAW",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"policy": {
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "pl_ingest_clean_to_sql_staging_dev",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "SILVER",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "RAW",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "pl_sql_staging_to_sql_staging_collect_all",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "GOLD",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "SILVER",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "pl_sql_staging_to_dwh_dev",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2025-09-02T21:04:43Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

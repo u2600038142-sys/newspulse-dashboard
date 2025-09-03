@@ -1,0 +1,9 @@
+{
+	"name": "adf-newspulse-dev",
+	"location": "westeurope",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "858a90f0-eb3a-4ce6-a3db-2ede5a393ba4",
+		"tenantId": "28333f0c-f53c-4b5d-ac0f-392c730c3d60"
+	}
+}
