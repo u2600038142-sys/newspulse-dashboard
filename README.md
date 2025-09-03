@@ -40,10 +40,6 @@ Scrape global news → cleanse → load to a SQL data warehouse → visualize in
 
 ---
 
-## 📂 Repository Structure
-
----
-
 ## 🚀 Pipeline Details
 
 ### 1) Ingestion (UiPath → Blob)
