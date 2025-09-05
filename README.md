@@ -43,7 +43,8 @@ Scrape global news → cleanse → load to a SQL data warehouse → visualize in
 - **Azure Data Factory** — Orchestration & scheduling  
 ![ADF](Docs/ADF.png)
 - **Azure SQL Database** — Staging & DWH (star schema)  
-- **Power BI** — Interactive dashboard  
+- **Power BI** — Interactive dashboard 
+![PBI](Docs/PBI.png) 
 - **GitHub Pages** — Public web hosting
 - **Azure AI Foundry** - Creating AI for news summary
 
