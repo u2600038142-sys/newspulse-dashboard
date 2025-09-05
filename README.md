@@ -71,6 +71,9 @@ Schema `dwh`:
 - `dim_source(source_id PK, source_name, source_url)`
 - `fact_article(article_id PK, date_key FK, source_id FK, title, load_ts)`
 
+### 5) AI News Summary (Azure AI Foundry)
+Model OpenAI GPT4
+
 Indexing:
 ```sql
 -- Staging
@@ -79,6 +82,3 @@ CREATE INDEX IX_staging_ingestdate ON dbo.staging_fact_article(ingest_date);
 -- DWH
 CREATE UNIQUE INDEX UX_dim_source_name_url ON dwh.dim_source(source_name, source_url);
 CREATE INDEX IX_fact_article_date_source ON dwh.fact_article(date_key, source_id);
-
-### 5) AI News Summary (Azure AI Foundry)
-Model OpenAI GPT4
