@@ -43,7 +43,8 @@ Scrape global news → cleanse → load to a SQL data warehouse → visualize in
 ![ADB](Docs/ADB.png)
 - **Azure Data Factory** — Orchestration & scheduling  
 ![ADF](Docs/ADF.png)
-- **Azure SQL Database** — Staging & DWH (star schema)  
+- **Azure SQL Database** — Staging & DWH (star schema) 
+![ASQL](Docs/ASQL.png) 
 - **Power BI** — Interactive dashboard 
 ![PBI](Docs/PBI.png) 
 - **GitHub Pages** — Public web hosting
