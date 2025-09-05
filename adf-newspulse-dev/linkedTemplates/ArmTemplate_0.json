@@ -559,6 +559,30 @@
 							"waitOnCompletion": true,
 							"parameters": {}
 						}
+					},
+					{
+						"name": "AI NEWS SUMMARY",
+						"type": "ExecutePipeline",
+						"dependsOn": [
+							{
+								"activity": "GOLD",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"pipeline": {
+								"referenceName": "pl_summary_az_open_ai",
+								"type": "PipelineReference"
+							},
+							"waitOnCompletion": true,
+							"parameters": {}
+						}
 					}
 				],
 				"policy": {
@@ -570,7 +594,8 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/pipelines/pl_ingest_clean_to_sql_staging_dev')]",
 				"[concat(variables('factoryId'), '/pipelines/pl_sql_staging_to_sql_staging_collect_all')]",
-				"[concat(variables('factoryId'), '/pipelines/pl_sql_staging_to_dwh_dev')]"
+				"[concat(variables('factoryId'), '/pipelines/pl_sql_staging_to_dwh_dev')]",
+				"[concat(variables('factoryId'), '/pipelines/pl_summary_az_open_ai')]"
 			]
 		},
 		{
