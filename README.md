@@ -40,6 +40,7 @@ Scrape global news → cleanse → load to a SQL data warehouse → visualize in
 - **Azure Blob Storage** — Raw & clean file store  
 - **Azure Databricks (PySpark)** — Data cleansing/transforms  
 - **Azure Data Factory** — Orchestration & scheduling  
+![ADF](Docs/ADF.png)
 - **Azure SQL Database** — Staging & DWH (star schema)  
 - **Power BI** — Interactive dashboard  
 - **GitHub Pages** — Public web hosting
