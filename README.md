@@ -30,6 +30,7 @@ Scrape global news → cleanse → load to a SQL data warehouse → visualize in
 5. **Data Warehouse** — Azure SQL (star schema: `dim_date`, `dim_source`, `fact_article`).
 6. **Visualization** — Power BI connected to DWH.
 7. **Publishing** — Power BI report embedded in `index.html` (GitHub Pages).
+8. **NewsSummarywithAI** - Azure AI Foundry with OpenAI GPT4 model.
 
 ---
 
@@ -42,6 +43,7 @@ Scrape global news → cleanse → load to a SQL data warehouse → visualize in
 - **Azure SQL Database** — Staging & DWH (star schema)  
 - **Power BI** — Interactive dashboard  
 - **GitHub Pages** — Public web hosting
+- **Azure AI Foundry** - Creating AI for news summary
 
 ---
 
@@ -77,3 +79,6 @@ CREATE INDEX IX_staging_ingestdate ON dbo.staging_fact_article(ingest_date);
 -- DWH
 CREATE UNIQUE INDEX UX_dim_source_name_url ON dwh.dim_source(source_name, source_url);
 CREATE INDEX IX_fact_article_date_source ON dwh.fact_article(date_key, source_id);
+
+### 5) AI News Summary (Azure AI Foundry)
+Model OpenAI GPT4
