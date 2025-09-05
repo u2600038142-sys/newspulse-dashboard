@@ -38,6 +38,7 @@ Scrape global news → cleanse → load to a SQL data warehouse → visualize in
 
 - **UiPath** — News scraping automation  
 - **Azure Blob Storage** — Raw & clean file store  
+![ABS](Docs/ABS.png)
 - **Azure Databricks (PySpark)** — Data cleansing/transforms  
 ![ADB](Docs/ADB.png)
 - **Azure Data Factory** — Orchestration & scheduling  
