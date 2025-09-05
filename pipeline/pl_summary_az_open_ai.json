@@ -1,0 +1,28 @@
+{
+	"name": "pl_summary_az_open_ai",
+	"properties": {
+		"activities": [
+			{
+				"name": "nb_summary_az_open_ai_to_dwh_summary",
+				"type": "DatabricksNotebook",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Users/u2600038142@gmail.com/newspulse-dashboard/AzureDatabricks/create_news_summary_with_azure_openai"
+				},
+				"linkedServiceName": {
+					"referenceName": "ls_databricks_newspulse_dev",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"annotations": []
+	}
+}
