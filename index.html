@@ -6,58 +6,35 @@
   <title>NewsPulse Dashboard</title>
   <style>
     body {
-      margin: 0;
       font-family: Arial, sans-serif;
-      background: #f7f9fc;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    header {
-      width: 100%;
-      padding: 1rem;
-      background: #0078d4;  /* biru khas Power BI */
-      color: white;
+      margin: 40px;
       text-align: center;
-      font-size: 1.5rem;
-      font-weight: bold;
     }
-    .iframe-container {
-      position: relative;
-      width: 95%;
-      padding-bottom: 60%; /* aspect ratio 16:9 */
-      height: 0;
-      overflow: hidden;
-      margin-top: 20px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      border-radius: 8px;
-      background: white;
+    h1 {
+      margin-bottom: 5px;
     }
-    .iframe-container iframe {
-      position: absolute;
-      top:0;
-      left:0;
-      width:100%;
-      height:100%;
-      border:0;
-      border-radius: 8px;
+    .author {
+      font-size: 14px;
+      margin-bottom: 20px;
+      color: #444;
     }
-    footer {
-      margin-top: 20px;
-      padding: 1rem;
-      font-size: 0.9rem;
-      color: #555;
+    iframe {
+      border: none;
     }
   </style>
 </head>
 <body>
-  <header>📊 NewsPulse Dashboard</header>
-  <div class="iframe-container">
-    <iframe title="WorldNewsInsights"
-      src="https://app.powerbi.com/view?r=eyJrIjoiMjQyOTRkN2UtYTM5Yy00NDQwLWI4NjUtMWM1OTVjNDc0MjQyIiwidCI6IjI5OTg1Njc2LTkzZTEtNGRkMS05ODgxLWFhZTMxMzc0MDc3MCIsImMiOjl9"
-      allowFullScreen="true">
-    </iframe>
+  <h1>NewsPulse Dashboard</h1>
+  <div class="author">
+    Author: Markus Lasroha | 
+    <a href="https://github.com/u2600038142-sys/newspulse-dashboard" target="_blank">
+      GitHub Repository
+    </a>
   </div>
-  <footer>© 2025 NewsPulse. Powered by Azure & Power BI.</footer>
+
+  <iframe title="WorldNewsInsights"
+          width="1000" height="600"
+          src="https://app.powerbi.com/view?r=eyJrIjoiMjQyOTRkN2UtYTM5Yy00NDQwLWI4NjUtMWM1OTVjNDc0MjQyIiwidCI6IjI5OTg1Njc2LTkzZTEtNGRkMS05ODgxLWFhZTMxMzc0MDc3MCIsImMiOjl9"
+          allowFullScreen="true"></iframe>
 </body>
 </html>
