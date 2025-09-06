@@ -14,6 +14,12 @@ Scrape global news → cleanse → load to a SQL data warehouse → visualize in
 
 ---
 
+## Monitoring
+📊 **Site traffic monitored via Google Analytics (GA4).**  
+This helps track visits to the live dashboard and improve user experience.
+
+---
+
 ## ⚡ Architecture
 
 ![Architecture](Docs/Architecture.png)
@@ -31,6 +37,7 @@ Scrape global news → cleanse → load to a SQL data warehouse → visualize in
 6. **Visualization** — Power BI connected to DWH.
 7. **Publishing** — Power BI report embedded in `index.html` (GitHub Pages).
 8. **NewsSummarywithAI** - Azure AI Foundry with OpenAI GPT4 model.
+9. **WebsitePerformanceTracking** - Google Analytic 4
 
 ---
 
@@ -52,6 +59,7 @@ Scrape global news → cleanse → load to a SQL data warehouse → visualize in
 ![Website](Docs/Website.png) 
 - **Azure AI Foundry** - Creating AI for news summary
 ![AOA](Docs/AOA.png) 
+- **Google Analytics 4** - Website performance tracking
 
 ---
 
@@ -82,11 +90,3 @@ Schema `dwh`:
 ### 5) AI News Summary (Azure AI Foundry)
 Model OpenAI GPT4
 
-Indexing:
-```sql
--- Staging
-CREATE INDEX IX_staging_ingestdate ON dbo.staging_fact_article(ingest_date);
-
--- DWH
-CREATE UNIQUE INDEX UX_dim_source_name_url ON dwh.dim_source(source_name, source_url);
-CREATE INDEX IX_fact_article_date_source ON dwh.fact_article(date_key, source_id);
