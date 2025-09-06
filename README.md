@@ -36,7 +36,8 @@ Scrape global news → cleanse → load to a SQL data warehouse → visualize in
 
 ## 🛠️ Tech Stack
 
-- **UiPath** — News scraping automation  
+- **UiPath** — News scraping automation
+![UiPath](Docs/UiPath.PNG)
 - **Azure Blob Storage** — Raw & clean file store  
 ![ABS](Docs/ABS.png)
 - **Azure Databricks (PySpark)** — Data cleansing/transforms  
