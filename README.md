@@ -49,6 +49,7 @@ Scrape global news → cleanse → load to a SQL data warehouse → visualize in
 - **Power BI** — Interactive dashboard 
 ![PBI](Docs/PBI.png) 
 - **GitHub Pages** — Public web hosting
+![Website](Docs/Website.png) 
 - **Azure AI Foundry** - Creating AI for news summary
 ![AOA](Docs/AOA.png) 
 
