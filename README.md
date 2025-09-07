@@ -7,7 +7,7 @@
 
 # 📊 NewsPulse Dashboard
 
-FOR PERSONAL USE ONLY TO SHOWCASE MARKUS' CAPABILITY ON AZURE AND POWER BI
+FOR PERSONAL USE ONLY TO SHOWCASE MARKUS' CAPABILITY ON **AZURE AND POWER BI**.
 End-to-end **data pipeline & analytics** project on **Microsoft Azure**.  
 Scrape global news → cleanse → load to a SQL data warehouse → visualize in Power BI → publish via GitHub Pages.
 
